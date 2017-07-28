@@ -14,10 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -}
 
-module Quasar.FS
-  ( module Quasar.FS.DirMetadata
-  , module Quasar.FS.Resource
-  ) where
+module Quasar.Mount.Mimir.Gen where
 
-import Quasar.FS.DirMetadata (DirMetadata)
-import Quasar.FS.Resource (Resource(..))
+import Control.Monad.Gen (class MonadGen)
+import Control.Monad.Rec.Class (class MonadRec)
+import Quasar.Mount.Common.Gen (genDirPath)
+import Quasar.Mount.Mimir as M
+
+genConfig ∷ ∀ m. MonadGen m ⇒ MonadRec m ⇒ m M.Config
+genConfig = genDirPath
